@@ -98,6 +98,27 @@
 
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
-  }
+    "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
+
+    "baseUrl": ".",
+    "paths": {
+      "@routes": [
+        "./src/routes/*"
+      ],
+      "@middleware/*": [
+        "./src/middleware/*"
+      ]
+    },
+  },
+
+  "ts-node": {
+    "esm": true
+  },
+  "include": [
+    "src/*.ts",
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
