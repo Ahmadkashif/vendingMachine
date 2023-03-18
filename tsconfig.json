@@ -107,6 +107,9 @@
       ],
       "@middleware/*": [
         "./src/middleware/*"
+      ],
+      "@database" :[
+        "./src/database/"
       ]
     },
   },
@@ -116,7 +119,8 @@
   },
   "include": [
     "src/*.ts",
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "src/*entity.ts"
   ],
   "exclude": [
     "node_modules"
