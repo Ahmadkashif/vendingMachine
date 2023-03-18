@@ -6,11 +6,11 @@ describe("Server Tests", () => {
   let server: http.Server;
 
   beforeAll(() => {
-    server = app.listen(3000); 
+    server = app.listen(3000);
   });
 
   afterAll((done) => {
-    server.close(done); 
+    server.close(done);
   });
 
   describe("Server setup and configuration", () => {
@@ -24,22 +24,22 @@ describe("Server Tests", () => {
     it("should accept valid JSON input and return JSON output", async () => {
       const validInput = { key: "value" };
       const response = await request(app)
-        .post('/') 
+        .post('/')
         .send(validInput)
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(200);
 
-      expect(response.body).toHaveProperty('key', 'value'); 
+      expect(response.body).toHaveProperty('key', 'value');
     });
 
     it("should reject invalid JSON input", async () => {
       const invalidInput = "Not a JSON";
       await request(app)
-        .post('/') 
+        .post('/')
         .send(invalidInput)
         .set('Accept', 'application/json')
-        .expect(400); 
+        .expect(400);
     });
   });
 
@@ -47,11 +47,11 @@ describe("Server Tests", () => {
     it("should not exceed 1 second for an average request", async () => {
       const startTime = Date.now();
       await request(app)
-        .get('/') 
+        .get('/')
         .expect(200);
 
       const responseTime = Date.now() - startTime;
-      expect(responseTime).toBeLessThanOrEqual(1000); 
+      expect(responseTime).toBeLessThanOrEqual(1000);
     });
   });
 });
