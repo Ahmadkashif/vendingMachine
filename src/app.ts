@@ -1,9 +1,12 @@
+import "reflect-metadata";
 import express, { Request, Response, NextFunction } from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import "reflect-metadata"
-import { db } from './database/index';
+// import { db } from './database/index';
 import { userRoutes } from './routes/userRoutes';
+import { DataSource, DataSourceOptions } from "typeorm";
+import { user } from "./database/entity/User";
+
 
 const PORT = process.env.PORT || 3000;
 
@@ -24,6 +27,23 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 app.get('/', (req: Request, res: Response) => {
     res.json(req.body);
 });
+
+const options: DataSourceOptions = {
+    type: "mysql",
+    host: "localhost",
+    port: 3306,
+    username: "root",
+    password: "password_P12345",
+    database: "testDb",
+    synchronize: true,
+    logging: true,
+    entities: [user],
+    subscribers: [],
+    migrations: [],
+
+}
+
+const db = new DataSource(options);
 
 try {
     db.initialize();

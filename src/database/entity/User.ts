@@ -1,18 +1,16 @@
 import { Entity, PrimaryGeneratedColumn, Column, Unique } from 'typeorm';
 
-@Entity()
-@Unique(['username'])
-export class User {
+@Entity('user')
+export class user {
 
-    constructor(id: number, username: string, password: string, deposit: number) {
-        this.id = id;
+    constructor( username: string, password: string, deposit: number) {
         this.username = username;
         this.password = password;
         this.deposit = deposit;
     }
-    
+
     @PrimaryGeneratedColumn()
-    id: number;
+    id: number = 0;
 
     @Column({ type: 'varchar', length: 255 })
     username: string;

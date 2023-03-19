@@ -1,4 +1,5 @@
 import { DataSource, DataSourceOptions } from "typeorm";
+import { user } from "./entity/User";
 
 const options: DataSourceOptions = {
     type: "mysql",
@@ -6,10 +7,10 @@ const options: DataSourceOptions = {
     port: 3306,
     username: "root",
     password: "password_P12345",
-    database: "vendingMachine",
+    database: "testDb",
     synchronize: true,
     logging: true,
-    entities: [],
+    entities: [user],
     subscribers: [],
     migrations: [],
 
