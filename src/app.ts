@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import "reflect-metadata"
 import { db } from './database/index';
+import { userRoutes } from './routes/userRoutes';
 
 const PORT = process.env.PORT || 3000;
 
@@ -10,6 +11,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use('/v1/user', userRoutes);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
     if (req.body && typeof req.body !== 'object') {
@@ -19,7 +21,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     }
 });
 
-app.post('/', (req: Request, res: Response) => {
+app.get('/', (req: Request, res: Response) => {
     res.json(req.body);
 });
 
