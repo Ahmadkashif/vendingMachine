@@ -4,9 +4,13 @@ import { Entity, PrimaryGeneratedColumn, Column, Unique } from 'typeorm';
 @Unique(['username'])
 export class User {
 
-    constructor() {
-
+    constructor(id: number, username: string, password: string, deposit: number) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.deposit = deposit;
     }
+    
     @PrimaryGeneratedColumn()
     id: number;
 

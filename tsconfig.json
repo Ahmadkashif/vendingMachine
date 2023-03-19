@@ -109,7 +109,9 @@
         "./src/middleware/*"
       ],
       "@database" :[
-        "./src/database/"
+        "./src/database/index.ts"
+      ],"@database/*" :[
+        "./src/database/*"
       ]
     },
   },
