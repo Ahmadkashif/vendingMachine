@@ -1,13 +1,14 @@
 import { Sequelize } from 'sequelize-typescript';
+import { User } from './entity/User';
 
-const sequelize = new Sequelize({
+const connection = new Sequelize({
   dialect: 'mysql',
   host: 'localhost',
   port: 3306,
   username: 'root',
   password: 'password_P12345',
-  database: 'testdb',
-  models: [__dirname + '/models'], // Update this path to point to your Sequelize models folder
+  database: 'testDb',
+  models: [User], // Update this path to point to your Sequelize models folder
 });
 
-export default sequelize;
+export default connection;

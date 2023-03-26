@@ -1,26 +1,29 @@
-import { Entity, PrimaryGeneratedColumn, Column, Unique } from 'typeorm';
+import { Model, Table, Column, PrimaryKey, AutoIncrement, DataType } from 'sequelize-typescript';
 
-@Entity('user')
-export class user {
+@Table({ tableName: 'users' })
+export class User extends Model {
 
-    constructor( username: string, password: string, deposit: number) {
-        this.username = username;
-        this.password = password;
-        this.deposit = deposit;
-    }
+    @PrimaryKey
+    @AutoIncrement
+    @Column
+    id!: number;
 
-    @PrimaryGeneratedColumn()
-    id: number = 0;
+    @Column({
+        type: DataType.STRING,
+        allowNull: false
+    })
+    name!: string;
 
-    @Column({ type: 'varchar', length: 255 })
-    username: string;
+    @Column({
+        type: DataType.STRING,
+        allowNull: false
+    })
+    email!: string;
 
-    @Column({ type: 'varchar', length: 255 })
-    password: string;
+    @Column({
+        type: DataType.STRING,
+        allowNull: false
+    })
+    password!: string;
 
-    @Column({ type: 'float', default: 0 })
-    deposit: number;
-
-    // @Column({ type: 'enum', enum: UserRole })
-    // role: UserRole;
 }
