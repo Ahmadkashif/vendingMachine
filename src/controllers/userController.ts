@@ -1,6 +1,6 @@
 import { Request, Response, RequestHandler } from "express";
 import { db } from "../database/index.test";
-import { User } from "../database/entity/User";
+import { User } from "../database/model/User";
 
 export class UserController {
 
