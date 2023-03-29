@@ -36,12 +36,4 @@ export default class Product extends Model {
     })
     cost!: number;
 
-    @ForeignKey(() => User)
-    @Column
-    sellerId!: number;
-
-
-    @BelongsTo(() => User, 'sellerId')
-    seller!: User;
-
 }

@@ -27,7 +27,7 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 try {
-    connection.sync();
+    connection.sync(({ force: true })).then().catch((error) => { console.log(error) });
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`);
     });
