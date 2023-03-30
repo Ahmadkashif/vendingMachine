@@ -5,10 +5,8 @@ import {
     PrimaryKey,
     AutoIncrement,
     Unique,
-    HasMany,
     DataType,
 } from 'sequelize-typescript';
-import Product from './product';
 
 
 @Table({ tableName: 'users' })
@@ -46,8 +44,5 @@ export default class User extends Model {
 
     @Column(DataType.ENUM('buyer', 'seller'))
     role!: string;
-
-    @HasMany(() => Product, 'sellerId')
-    products!: Product[];
 
 }

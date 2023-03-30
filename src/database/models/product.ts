@@ -4,11 +4,9 @@ import {
     Model,
     PrimaryKey,
     AutoIncrement,
-    ForeignKey,
-    BelongsTo,
+    Unique,
     DataType
 } from "sequelize-typescript";
-import User from './user';
 
 @Table({ tableName: 'products' })
 export default class Product extends Model {
@@ -18,6 +16,7 @@ export default class Product extends Model {
     @Column
     id!: number;
 
+    @Unique
     @Column({
         type: DataType.STRING,
         allowNull: false
@@ -31,7 +30,7 @@ export default class Product extends Model {
     units!: number;
 
     @Column({
-        type: DataType.NUMBER,
+        type: DataType.INTEGER,
         allowNull: false
     })
     cost!: number;

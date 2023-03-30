@@ -40,6 +40,5 @@ describe('Product model', () => {
     expect(product.name).toBe('Test Product');
     expect(product.cost).toBe(100);
     expect(product.units).toBe(10);
-    expect(product.sellerId).toBe(user.id);
   });
 });
