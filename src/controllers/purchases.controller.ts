@@ -5,6 +5,15 @@ import Product from "../database/models/product";
 
 export class PurchaseController {
 
+    public static get: RequestHandler = async (req: Request, res: Response) => {
+        try {
+            const purchases = await Purchase.findAll();
+            res.status(200).json(purchases);
+        } catch (error) {
+            res.status(500).json({ message: "Failed to retrieve purchases.", error });
+        }
+    };
+    
     public static add: RequestHandler = async (req: Request, res: Response) => {
         try {
             const { userId, productId, quantity } = req.body;
