@@ -28,7 +28,7 @@ export class ProductController {
     public static get: RequestHandler = async (req: Request, res: Response) => {
 
         try {
-            const products = await Product.findAll({ include: [User] });
+            const products = await Product.findAll();
             res.status(200).json(products);
         } catch (error) {
             res.status(500).json({ message: 'Failed to fetch products.', error });

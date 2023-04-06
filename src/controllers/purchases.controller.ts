@@ -13,7 +13,7 @@ export class PurchaseController {
             res.status(500).json({ message: "Failed to retrieve purchases.", error });
         }
     };
-    
+
     public static add: RequestHandler = async (req: Request, res: Response) => {
         try {
             const { userId, productId, quantity } = req.body;
@@ -27,14 +27,22 @@ export class PurchaseController {
             const product = await Product.findByPk(productId);
             if (!product) return res.status(404).json({ message: "Product not found." });
 
+            if (product.units < quantity)
+                return res.status(400).json({ message: "Sorry, the product is not available in the quantity you demand, try a lower qunatity" });
+
             const totalCost = product.cost * quantity;
 
+            const updatedProductQuantity = product.units - quantity;
+            product.units = updatedProductQuantity;
+            await product.save();
+            
             const purchase = await Purchase.create({
                 userId,
                 productId,
                 quantity,
                 totalCost,
             });
+
 
             res.status(201).json(purchase);
         } catch (error) {
