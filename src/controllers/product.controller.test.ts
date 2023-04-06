@@ -3,7 +3,6 @@ import { ProductController } from "../controllers/product.controller";
 import Product from "../database/models/product";
 import User from "../database/models/user";
 
-// Mock response object
 const mockResponse = () => {
     const res: Partial<Response> = {};
     res.status = jest.fn().mockReturnValue(res);
@@ -11,7 +10,6 @@ const mockResponse = () => {
     return res;
 };
 
-// Mock request object
 const mockRequest = (body: any, params: any = {}): Partial<Request> => ({
     body,
     params,

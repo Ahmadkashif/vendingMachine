@@ -4,6 +4,7 @@ import User from "../database/models/user";
 import Product from "../database/models/product";
 
 export class PurchaseController {
+
     public static add: RequestHandler = async (req: Request, res: Response) => {
         try {
             const { userId, productId, quantity } = req.body;

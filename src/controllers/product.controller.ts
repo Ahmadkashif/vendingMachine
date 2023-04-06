@@ -58,7 +58,6 @@ export class ProductController {
                     res.status(404).json({ message: 'Seller not found.' });
                     return;
                 }
-                product.sellerId = sellerId;
             }
 
             await product.save();
